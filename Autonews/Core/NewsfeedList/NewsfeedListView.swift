@@ -10,21 +10,21 @@ import SwiftUI
 struct NewsfeedListView: View {
     
     @StateObject private var vm = NewsfeedListViewModel()
-    @State var cacheSize = LocalFileManager.instance.getCacheSize(folderName: "feed_item_images")
+    @State var cacheSize = LocalFileManager.instance.getCacheSize(folderName: Constants.FolderName.feedItemImagesFolder)
     
     var body: some View {
         PageListView(pageListVM: vm) { item in
             NewsfeedListItemView(vm: NewsfeedListItemViewModel(newsfeedItem: item))
         }
-        .navigationTitle("News feed")
+        .navigationTitle(Constants.Strings.feedNavigationTitle)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Text("Cache size: \(cacheSize) mb")
                     Button(action: {
-                        LocalFileManager.instance.clearCache(folderName: "feed_item_images")
+                        LocalFileManager.instance.clearCache(folderName: Constants.FolderName.feedItemImagesFolder)
                     }, label: {
-                        Text("Clear cache")
+                        Text(Constants.Strings.clearCache)
                     })
                 } label: {
                     Image(systemName: "gear")
@@ -33,7 +33,7 @@ struct NewsfeedListView: View {
         }
         .onAppear {
             vm.onUpdate = {
-                cacheSize = LocalFileManager.instance.getCacheSize(folderName: "feed_item_images")
+                cacheSize = LocalFileManager.instance.getCacheSize(folderName: Constants.FolderName.feedItemImagesFolder)
             }
         }
     }

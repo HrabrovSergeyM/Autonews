@@ -15,10 +15,12 @@ struct PaginationButton: View {
     
     var body: some View {
         Button(action: {
-            action()
+            withAnimation(.bouncy) {
+                action()
+            }
         }) {
             Text(buttonLabel)
-                .padding()
+                .padding(isSelected ? 16 : 12)
                 .background(isSelected ? Color.blue : Color("feed-item"))
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(Constants.Constraints.buttonCornerRadius)

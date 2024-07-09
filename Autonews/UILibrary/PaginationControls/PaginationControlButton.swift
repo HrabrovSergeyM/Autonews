@@ -14,7 +14,9 @@ struct PaginationControlButton: View {
     
     var body: some View {
         Button(action: {
-            action()
+            withAnimation(.bouncy) {
+                action()
+            }
         }) {
             Image(systemName: icon)
                 .padding(Constants.Constraints.buttonPadding)

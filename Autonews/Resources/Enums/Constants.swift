@@ -25,4 +25,14 @@ public enum Constants {
         static let newsfeedCardImageHeight: CGFloat = 120
         static let newsfeedCardImageWidth: CGFloat = 120
     }
+    
+    public enum FolderName {
+        static let feedItemImagesFolder = "feed_item_images"
+    }
+    
+    public enum Strings {
+        static let feedNavigationTitle = "Autodoc News feed"
+        
+        static let clearCache = "Clear cache"
+    }
 }

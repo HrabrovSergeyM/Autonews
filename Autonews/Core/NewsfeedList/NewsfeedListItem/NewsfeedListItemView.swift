@@ -50,14 +50,13 @@ struct NewsfeedListItemView: View {
                     Text(vm.title)
                         .font(.headline)
                         .foregroundColor(.primary)
-                        .lineLimit(isExpandedText ? nil : 2)
+                        .lineLimit(isExpandedText ? nil : 3)
                     Text(vm.description)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .lineLimit(isExpandedText ? nil : 2)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 8)
             }
             
             if isExpanded {

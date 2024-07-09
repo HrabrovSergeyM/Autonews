@@ -16,7 +16,7 @@ struct PaginationView: View {
     var body: some View {
         HStack(spacing: 8) {
             
-            if page > 3 {
+            if page > 2 {
                 PaginationControlButton(action: {
                     page = 1
                     loadPage()
@@ -35,6 +35,7 @@ struct PaginationView: View {
                     page = pageIndex + 1
                     loadPage()
                 }, buttonLabel: "\(pageIndex + 1)", isSelected: page == pageIndex + 1)
+                .disabled(page == pageIndex + 1)
             }
             
             if page < totalPages {
@@ -44,7 +45,7 @@ struct PaginationView: View {
                 }, icon: "chevron.forward")
             }
             
-            if page + 3 < totalPages {
+            if page + 1 < totalPages {
                 PaginationControlButton(action: {
                     page = totalPages
                     loadPage()

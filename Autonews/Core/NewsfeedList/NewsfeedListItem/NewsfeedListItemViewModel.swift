@@ -36,7 +36,7 @@ final class NewsfeedListItemViewModel: ObservableObject {
     }
     
     func loadImage() {
-        imageLoader.loadImage(from: titleImageUrl, imageName: "\(id)", folderName: "feed_item_images")
+        imageLoader.loadImage(from: titleImageUrl, imageName: "\(id)", folderName: Constants.FolderName.feedItemImagesFolder)
     }
     
 }
