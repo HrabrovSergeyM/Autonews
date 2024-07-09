@@ -13,33 +13,42 @@ struct NewsfeedListItemView: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
-            AsyncImage(url: URL(string: vm.titleImageUrl)) { image in
-                image
+            if let imageData = vm.imageLoader.imageData, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 120, height: 120)
                     .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
-            } placeholder: {
-                ProgressView()
-                    .frame(width: 120, height: 120)
+            } else {
+                AsyncImage(url: URL(string: vm.titleImageUrl)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 120, height: 120)
+                        .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: 120, height: 120)
+                }
+                .onAppear {
+                    vm.loadImage()
+                }
             }
-            .frame(alignment: .leading)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(vm.title)
-                    .frame(maxWidth: .infinity)
                     .font(.headline)
                     .foregroundColor(.primary)
+                    .lineLimit(2)
                 
                 Text(vm.description)
-                    .frame(maxWidth: .infinity)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.vertical, 8)
         }
-        .frame(maxWidth: .infinity)
         .padding(12)
         .background(Color.white)
         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)

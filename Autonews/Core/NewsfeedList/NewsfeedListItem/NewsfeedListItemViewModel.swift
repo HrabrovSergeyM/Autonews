@@ -19,6 +19,8 @@ final class NewsfeedListItemViewModel: ObservableObject {
     @Published var titleImageUrl: String
     @Published var categoryType: String
     
+    @ObservedObject var imageLoader = ImageLoader()
+    
     init(newsfeedItem: NewsfeedItemModel) {
         self.id = newsfeedItem.id
         self.title = newsfeedItem.title ?? ""
@@ -28,6 +30,13 @@ final class NewsfeedListItemViewModel: ObservableObject {
         self.fullUrl = newsfeedItem.fullUrl ?? ""
         self.titleImageUrl = newsfeedItem.titleImageUrl ?? "https://play-lh.googleusercontent.com/HCpTziExtoKvbP0m8qqLmNmZLQ8TqVj4Rwj__-bGErxGahd6Vm1tZcBShHAPzAwQIg"
         self.categoryType = newsfeedItem.categoryType ?? ""
+        
+        loadImage()
+        
+    }
+    
+    func loadImage() {
+        imageLoader.loadImage(from: titleImageUrl, imageName: "\(id)", folderName: "feed_item_images")
     }
     
     func update(with newsfeedItem: NewsfeedItemModel) {
