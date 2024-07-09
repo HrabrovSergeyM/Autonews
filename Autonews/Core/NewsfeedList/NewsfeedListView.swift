@@ -13,16 +13,7 @@ struct NewsfeedListView: View {
     
     var body: some View {
         PageListView(pageListVM: vm) { item in
-            VStack(alignment: .leading) {
-                Text(item.title ?? "")
-                    .font(.headline)
-                Text(item.description ?? "")
-                    .font(.subheadline)
-            }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
-            .shadow(radius: 4)
+            NewsfeedListItemView(vm: NewsfeedListItemViewModel(newsfeedItem: item))
         }
     }
 }

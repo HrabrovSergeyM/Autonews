@@ -18,8 +18,10 @@ struct PageListView<ViewModel, ItemView>: View where ViewModel: PageListViewMode
             ScrollView {
                 LazyVStack {
                     if let items = pageListVM.items {
-                        ForEach(items.indices, id: \.self) { index in
-                            itemViewBuilder(items[index])
+                        ForEach(items, id: \.id) { item in
+                            itemViewBuilder(item)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
                         }
                     } else {
                         ForEach(0..<5, id: \.self) { _ in
