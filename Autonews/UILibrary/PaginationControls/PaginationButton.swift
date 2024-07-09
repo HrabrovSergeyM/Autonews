@@ -18,7 +18,7 @@ struct PaginationButton: View {
             action()
         }) {
             Text(buttonLabel)
-                .padding(Constants.Constraints.buttonPadding)
+                .padding()
                 .background(isSelected ? Color.blue : Color("feed-item"))
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(Constants.Constraints.buttonCornerRadius)

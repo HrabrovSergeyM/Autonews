@@ -17,7 +17,7 @@ struct PaginationControlButton: View {
             action()
         }) {
             Image(systemName: icon)
-                .padding()
+                .padding(Constants.Constraints.buttonPadding)
                 .background(Color("feed-item"))
                 .foregroundColor(.primary)
                 .cornerRadius(Constants.Constraints.buttonCornerRadius)

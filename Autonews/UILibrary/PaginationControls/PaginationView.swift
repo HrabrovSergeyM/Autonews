@@ -14,15 +14,23 @@ struct PaginationView: View {
     let loadPage: () -> Void
     
     var body: some View {
-        HStack {
+        HStack(spacing: 8) {
+            
+            if page > 3 {
+                PaginationControlButton(action: {
+                    page = 1
+                    loadPage()
+                }, icon: "chevron.backward.2")
+            }
+            
             if page > 1 {
                 PaginationControlButton(action: {
                     page -= 1
                     loadPage()
-                }, icon: "chevron.left")
+                }, icon: "chevron.backward")
             }
             
-            ForEach(max(0, page - 3)..<min(totalPages, page + 2), id: \.self) { pageIndex in
+            ForEach(max(0, page - 2)..<min(totalPages, page + 1), id: \.self) { pageIndex in
                 PaginationButton(action: {
                     page = pageIndex + 1
                     loadPage()
@@ -33,8 +41,16 @@ struct PaginationView: View {
                 PaginationControlButton(action: {
                     page += 1
                     loadPage()
-                }, icon: "chevron.right")
+                }, icon: "chevron.forward")
+            }
+            
+            if page + 3 < totalPages {
+                PaginationControlButton(action: {
+                    page = totalPages
+                    loadPage()
+                }, icon: "chevron.forward.2")
             }
         }
+        .frame(maxWidth: .infinity)
     }
 }

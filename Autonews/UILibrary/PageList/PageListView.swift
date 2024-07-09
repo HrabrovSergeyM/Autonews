@@ -38,6 +38,7 @@ struct PageListView<ViewModel, ItemView>: View where ViewModel: PageListViewMode
                     pageListVM.getData(refresh: true)
                 })
                 .disabled(pageListVM.isLoading)
+                .opacity(pageListVM.isLoading ? 0.7 : 1)
                 .padding(8)
             }
         }
