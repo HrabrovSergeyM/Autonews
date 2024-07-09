@@ -85,4 +85,3 @@ class PageListViewModel<Item: FeedItem, List: FeedList>: PageListViewModelProtoc
         fatalError("This method must be overridden")
     }
 }
-

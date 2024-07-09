@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct NewsfeedListView: View {
-    @StateObject private var viewModel = NewsfeedListViewModel()
+    
+    @StateObject private var vm = NewsfeedListViewModel()
     
     var body: some View {
-        PageListView(pageListVM: viewModel) { item in
+        PageListView(pageListVM: vm) { item in
             VStack(alignment: .leading) {
                 Text(item.title ?? "")
                     .font(.headline)
@@ -20,7 +21,7 @@ struct NewsfeedListView: View {
             }
             .padding()
             .background(Color.white)
-            .cornerRadius(8)
+            .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
             .shadow(radius: 4)
         }
     }

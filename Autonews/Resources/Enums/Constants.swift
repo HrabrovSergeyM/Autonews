@@ -14,4 +14,11 @@ public enum Constants {
         case page = "page"
         case size = "size"
     }
+    
+    public enum Constraints {
+        static let buttonPadding: CGFloat = 12
+        static let buttonCornerRadius: CGFloat = 8
+        
+        static let newsfeedCardCornerRadius: CGFloat = 8
+    }
 }
