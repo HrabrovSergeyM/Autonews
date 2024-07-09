@@ -11,6 +11,7 @@ struct NewsfeedListItemView: View {
     
     @ObservedObject var vm: NewsfeedListItemViewModel
     @State private var isExpanded = false
+    @State private var isExpandedText = false
     
     var body: some View {
         VStack(spacing: 8) {
@@ -49,11 +50,11 @@ struct NewsfeedListItemView: View {
                     Text(vm.title)
                         .font(.headline)
                         .foregroundColor(.primary)
-                        .lineLimit(isExpanded ? nil : 2)
+                        .lineLimit(isExpandedText ? nil : 2)
                     Text(vm.description)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                        .lineLimit(isExpanded ? nil : 2)
+                        .lineLimit(isExpandedText ? nil : 2)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 8)
@@ -90,6 +91,7 @@ struct NewsfeedListItemView: View {
             withAnimation(.spring()) {
                 isExpanded.toggle()
             }
+            isExpandedText.toggle()
         }
     }
 }
