@@ -9,10 +9,14 @@ import SwiftUI
 
 @main
 struct AutonewsApp: App {
+    
+    @StateObject private var networkMonitor = NetworkMonitor()
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 NewsfeedListView()
+                    .environmentObject(networkMonitor)
             }
         }
     }

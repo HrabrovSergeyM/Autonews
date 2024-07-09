@@ -50,5 +50,10 @@ struct PageListView<ViewModel, ItemView>: View where ViewModel: PageListViewMode
         .refreshable {
             pageListVM.getData(refresh: true)
         }
+        .onNetworkChange(isDataAvailable: {
+            pageListVM.items != nil
+        }, fetchData: {
+            pageListVM.getData(refresh: true)
+        })
     }
 }

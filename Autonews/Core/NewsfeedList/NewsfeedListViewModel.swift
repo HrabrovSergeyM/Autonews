@@ -11,6 +11,8 @@ import Combine
 final class NewsfeedListViewModel: PageListViewModel<NewsfeedItemModel, NewsfeedListModel> {
     private let newsfeedService: NewsfeedServiceProtocol
     
+    var onUpdate: (() -> Void)?
+    
     init(newsfeedService: NewsfeedServiceProtocol = NewsfeedService()) {
         self.newsfeedService = newsfeedService
         super.init()
@@ -18,7 +20,7 @@ final class NewsfeedListViewModel: PageListViewModel<NewsfeedItemModel, Newsfeed
     }
     
     override func fetchPage(page: Int, size: Int) -> AnyPublisher<NewsfeedListModel, Error> {
+        onUpdate?()
         return newsfeedService.fetchNews(page: page, size: size)
     }
-    
 }

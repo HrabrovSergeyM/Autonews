@@ -39,14 +39,4 @@ final class NewsfeedListItemViewModel: ObservableObject {
         imageLoader.loadImage(from: titleImageUrl, imageName: "\(id)", folderName: "feed_item_images")
     }
     
-    func update(with newsfeedItem: NewsfeedItemModel) {
-        self.id = newsfeedItem.id
-        self.title = newsfeedItem.title ?? ""
-        self.description = newsfeedItem.description ?? ""
-        self.publishedDate = newsfeedItem.publishedDate ?? ""
-        self.url = newsfeedItem.url ?? ""
-        self.fullUrl = newsfeedItem.fullUrl ?? ""
-        self.titleImageUrl = newsfeedItem.titleImageUrl ?? "https://play-lh.googleusercontent.com/HCpTziExtoKvbP0m8qqLmNmZLQ8TqVj4Rwj__-bGErxGahd6Vm1tZcBShHAPzAwQIg"
-        self.categoryType = newsfeedItem.categoryType ?? ""
-    }
 }

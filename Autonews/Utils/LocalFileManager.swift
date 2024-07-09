@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 class LocalFileManager {
+    
+    let mbSize: UInt64 = 1_048_576
+    
     static let instance = LocalFileManager()
     
     private init() { }
@@ -118,5 +121,32 @@ class LocalFileManager {
             return nil
         }
         return folderURL.appendingPathComponent(imageName + ".png")
+    }
+    
+    func getCacheSize(folderName: String) -> UInt64 {
+        guard let folderURL = getURLForFolder(folderName: folderName) else { return 0 }
+        var size: UInt64 = 0
+        do {
+            let files = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: [.fileSizeKey], options: .skipsHiddenFiles)
+            for file in files {
+                let fileSize = try file.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+                size += UInt64(fileSize)
+            }
+        } catch let error {
+            Logger.shared.log("Error calculating cache size. Folder name: \(folderName). Error: \(error.localizedDescription)", level: .error)
+        }
+        return size / mbSize
+    }
+    
+    func clearCache(folderName: String) {
+        guard let folderURL = getURLForFolder(folderName: folderName) else { return }
+        do {
+            let files = try FileManager.default.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            for file in files {
+                try FileManager.default.removeItem(at: file)
+            }
+        } catch let error {
+            Logger.shared.log("Error clearing cache. Folder name: \(folderName). Error: \(error.localizedDescription)", level: .error)
+        }
     }
 }

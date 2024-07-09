@@ -34,6 +34,8 @@
 		E90F3FFD2C3D70B7009C193B /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F3FFC2C3D70B7009C193B /* LocalFileManager.swift */; };
 		E90F3FFF2C3D7BD1009C193B /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F3FFE2C3D7BD1009C193B /* TagView.swift */; };
 		E90F40022C3D87E9009C193B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F40012C3D87E8009C193B /* String.swift */; };
+		E90F40062C3D8E70009C193B /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F40052C3D8E70009C193B /* NetworkMonitor.swift */; };
+		E90F40092C3D8F74009C193B /* OnNetworkChangeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F40082C3D8F74009C193B /* OnNetworkChangeModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		E90F3FFC2C3D70B7009C193B /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		E90F3FFE2C3D7BD1009C193B /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		E90F40012C3D87E8009C193B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E90F40052C3D8E70009C193B /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		E90F40082C3D8F74009C193B /* OnNetworkChangeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnNetworkChangeModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 		E90F3FC42C3C83F3009C193B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E90F40072C3D8F5F009C193B /* Modifiers */,
 				E90F40002C3D87DE009C193B /* Extensions */,
 				E90F3FD22C3C8515009C193B /* Enums */,
 			);
@@ -140,6 +145,7 @@
 			children = (
 				E90F3FF82C3D7067009C193B /* ImageLoader.swift */,
 				E90F3FFA2C3D7092009C193B /* Logger.swift */,
+				E90F40052C3D8E70009C193B /* NetworkMonitor.swift */,
 				E90F3FFC2C3D70B7009C193B /* LocalFileManager.swift */,
 			);
 			path = Utils;
@@ -240,6 +246,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E90F40072C3D8F5F009C193B /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E90F40082C3D8F74009C193B /* OnNetworkChangeModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,7 +332,9 @@
 				E90F3FCB2C3C8445009C193B /* APIService.swift in Sources */,
 				E90F3FED2C3CA143009C193B /* PageListView.swift in Sources */,
 				E90F3FD12C3C8462009C193B /* QueryParameter.swift in Sources */,
+				E90F40092C3D8F74009C193B /* OnNetworkChangeModifier.swift in Sources */,
 				E90F3FD42C3C8541009C193B /* HTTPMethod.swift in Sources */,
+				E90F40062C3D8E70009C193B /* NetworkMonitor.swift in Sources */,
 				E90F3FF72C3D61AC009C193B /* PaginationView.swift in Sources */,
 				E90F3FE32C3C8C36009C193B /* NewsfeedListView.swift in Sources */,
 				E90F3FEB2C3C9BFD009C193B /* PageListViewModel.swift in Sources */,
