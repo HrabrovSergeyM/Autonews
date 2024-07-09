@@ -36,6 +36,7 @@
 		E90F40022C3D87E9009C193B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F40012C3D87E8009C193B /* String.swift */; };
 		E90F40062C3D8E70009C193B /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F40052C3D8E70009C193B /* NetworkMonitor.swift */; };
 		E90F40092C3D8F74009C193B /* OnNetworkChangeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F40082C3D8F74009C193B /* OnNetworkChangeModifier.swift */; };
+		E90F400B2C3D92D6009C193B /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F400A2C3D92D6009C193B /* ShimmerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		E90F40012C3D87E8009C193B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E90F40052C3D8E70009C193B /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		E90F40082C3D8F74009C193B /* OnNetworkChangeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnNetworkChangeModifier.swift; sourceTree = "<group>"; };
+		E90F400A2C3D92D6009C193B /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				E90F3FF12C3D5B8F009C193B /* PaginationControls */,
 				E90F3FE92C3C9BC6009C193B /* PageList */,
 				E90F3FFE2C3D7BD1009C193B /* TagView.swift */,
+				E90F400A2C3D92D6009C193B /* ShimmerView.swift */,
 			);
 			path = UILibrary;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				E90F3FB62C3C834A009C193B /* AutonewsApp.swift in Sources */,
 				E90F3FD62C3C8558009C193B /* Constants.swift in Sources */,
 				E90F3FDB2C3C869E009C193B /* NewsfeedItemModel.swift in Sources */,
+				E90F400B2C3D92D6009C193B /* ShimmerView.swift in Sources */,
 				E90F3FE82C3C8D10009C193B /* NewsfeedListItemViewModel.swift in Sources */,
 				E90F3FFD2C3D70B7009C193B /* LocalFileManager.swift in Sources */,
 				E90F3FFF2C3D7BD1009C193B /* TagView.swift in Sources */,

@@ -20,5 +20,9 @@ public enum Constants {
         static let buttonCornerRadius: CGFloat = 8
         
         static let newsfeedCardCornerRadius: CGFloat = 8
+        static let newsfeedCardHeight: CGFloat = 120
+        
+        static let newsfeedCardImageHeight: CGFloat = 120
+        static let newsfeedCardImageWidth: CGFloat = 120
     }
 }

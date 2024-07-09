@@ -24,10 +24,10 @@ struct PageListView<ViewModel, ItemView>: View where ViewModel: PageListViewMode
                                 .padding(.vertical, 8)
                         }
                     } else {
-                        ForEach(0..<5, id: \.self) { _ in
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                                .padding()
+                        ForEach(0..<8, id: \.self) { _ in
+                            ShimmerView(height: Constants.Constraints.newsfeedCardHeight)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
                         }
                     }
                 }

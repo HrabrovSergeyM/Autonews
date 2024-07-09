@@ -19,30 +19,37 @@ struct NewsfeedListItemView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 120, height: 120)
+                        .frame(
+                            width: Constants.Constraints.newsfeedCardImageWidth,
+                            height: Constants.Constraints.newsfeedCardImageHeight
+                        )
                         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
                 } else {
                     AsyncImage(url: URL(string: vm.titleImageUrl)) { image in
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 120, height: 120)
+                            .frame(
+                                width: Constants.Constraints.newsfeedCardImageWidth,
+                                height: Constants.Constraints.newsfeedCardImageHeight
+                            )
                             .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
                     } placeholder: {
                         ProgressView()
-                            .frame(width: 120, height: 120)
+                            .frame(
+                                width: Constants.Constraints.newsfeedCardImageWidth,
+                                height: Constants.Constraints.newsfeedCardImageHeight
+                            )
                     }
                     .onAppear {
                         vm.loadImage()
                     }
                 }
-                
                 VStack(alignment: .leading, spacing: 4) {
                     Text(vm.title)
                         .font(.headline)
                         .foregroundColor(.primary)
                         .lineLimit(isExpanded ? nil : 2)
-                    
                     Text(vm.description)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -54,10 +61,7 @@ struct NewsfeedListItemView: View {
             
             if isExpanded {
                 VStack(alignment: .leading, spacing: 8) {
-                    
-                    
                     TagView(tag: vm.categoryType)
-                    
                     Text(vm.fullUrl)
                         .foregroundColor(.blue)
                         .font(.callout)
@@ -72,20 +76,20 @@ struct NewsfeedListItemView: View {
                             .foregroundColor(.primary)
                             .font(.caption)
                     }
-                        
                 }
+                .opacity(isExpanded ? 1 : 0)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .transition(.move(edge: .bottom))
             }
+            
         }
         .padding(12)
         .background(Color("feed-item"))
         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
         .onTapGesture {
-            withAnimation {
+            withAnimation(.spring()) {
                 isExpanded.toggle()
             }
         }
     }
 }
-
