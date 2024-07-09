@@ -8,11 +8,12 @@
 import Foundation
 
 enum Endpoint {
-    case mainLink
+    case mainLink(Int, Int)
     
     var rawValue: String {
         switch self {
-        case .mainLink: return ""
+        case .mainLink(let page, let pageSize):
+            return "/\(page)/\(pageSize)"
         }
     }
     
@@ -28,3 +29,4 @@ enum Endpoint {
         return self.url(with: parameters)
     }
 }
+

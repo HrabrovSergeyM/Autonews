@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1650E236-3EF6-4B83-8644-ABDDAD547FC1"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65277B22-AF1B-477A-B6C2-756DF0E37324"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Autonews/NetworkLayer/Services/NewsfeedService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "fetchNews(page:size:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82DACB47-DD2D-40F8-821B-CF40A9582E15"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Autonews/NetworkLayer/Services/APIService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "fetch(path:parameters:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "82DACB47-DD2D-40F8-821B-CF40A9582E15 - 21ebe9b15a6075b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 1 of Autonews.APIService.fetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(path: Autonews.Endpoint, parameters: Swift.Array&lt;Autonews.QueryParameter&gt;) -&gt; Combine.AnyPublisher&lt;&#x3c4;_0_0, Swift.Error&gt;"
+                  moduleName = "Autonews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brave/Desktop/Autonews/Autonews/NetworkLayer/Services/APIService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "82DACB47-DD2D-40F8-821B-CF40A9582E15 - ec93febe8c58f589"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Autonews.APIService.fetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(path: Autonews.Endpoint, parameters: Swift.Array&lt;Autonews.QueryParameter&gt;) -&gt; Combine.AnyPublisher&lt;&#x3c4;_0_0, Swift.Error&gt;"
+                  moduleName = "Autonews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brave/Desktop/Autonews/Autonews/NetworkLayer/Services/APIService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "636">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

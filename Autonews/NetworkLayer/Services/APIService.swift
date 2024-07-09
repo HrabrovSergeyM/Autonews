@@ -31,6 +31,7 @@ class APIService: APIServiceProtocol {
         guard let url = fullURL(path: path, parameters: parameters) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
+        print(url)
         return networkingService.get(url: url)
             .decode(type: T.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
@@ -41,6 +42,7 @@ class APIService: APIServiceProtocol {
             let data = try JSONEncoder().encode(object)
             guard let url = fullURL(path: path) else {
                 return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+                
             }
             return networkingService.post(url: url, data: data)
                 .decode(type: U.self, decoder: JSONDecoder())

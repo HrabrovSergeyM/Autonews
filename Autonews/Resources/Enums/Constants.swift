@@ -8,10 +8,10 @@
 import Foundation
 
 public enum Constants {
-    static let mainLink = "https://webapi.autodoc.ru/api/news/"
+    static let mainLink = "https://webapi.autodoc.ru/api/news"
     
     public enum QueryKeys: String {
-        case limit = "limit"
-        case offset = "offset"
+        case page = "page"
+        case size = "size"
     }
 }

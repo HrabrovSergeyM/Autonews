@@ -11,12 +11,12 @@ struct QueryParameter {
     let key: String
     let value: String
     
-    static func limit(_ value: Int) -> QueryParameter {
-        return QueryParameter(Constants.QueryKeys.limit.rawValue, "\(value)")
+    static func page(_ value: Int) -> QueryParameter {
+        return QueryParameter("page", "\(value)")
     }
     
-    static func offset(_ value: Int) -> QueryParameter {
-        return QueryParameter(Constants.QueryKeys.offset.rawValue, "\(value)")
+    static func size(_ value: Int) -> QueryParameter {
+        return QueryParameter("size", "\(value)")
     }
     
     init(_ key: String, _ value: Bool) {
@@ -29,3 +29,4 @@ struct QueryParameter {
         self.value = value
     }
 }
+

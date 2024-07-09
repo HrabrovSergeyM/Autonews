@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct NewsfeedListModel: Decodable {
+struct NewsfeedListModel: FeedList, Decodable {
     var news: [NewsfeedItemModel]
     var totalCount: Int
+}
+
+protocol FeedList {
+    associatedtype Item: FeedItem
+    
+    var news: [Item] { get }
+    var totalCount: Int { get }
 }

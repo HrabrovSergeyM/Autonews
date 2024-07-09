@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct NewsfeedItemModel: Decodable {
+struct NewsfeedItemModel: FeedItem, Decodable {
     let id: Int
-    let title: String
-    let description: String
-    let publishedDate: String
-    let url: String
-    let fullUrl: String
-    let titleImageUrl: String
-    let categoryType: String
+    let title: String?
+    let description: String?
+    let publishedDate: String?
+    let url: String?
+    let fullUrl: String?
+    let titleImageUrl: String?
+    let categoryType: String?
 }
+
+protocol FeedItem: Identifiable, Decodable {}
