@@ -15,5 +15,6 @@ struct NewsfeedListView: View {
         PageListView(pageListVM: vm) { item in
             NewsfeedListItemView(vm: NewsfeedListItemViewModel(newsfeedItem: item))
         }
+        .navigationTitle("News feed")
     }
 }

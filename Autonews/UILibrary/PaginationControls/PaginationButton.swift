@@ -19,8 +19,8 @@ struct PaginationButton: View {
         }) {
             Text(buttonLabel)
                 .padding(Constants.Constraints.buttonPadding)
-                .background(isSelected ? Color.blue : Color.gray)
-                .foregroundColor(.white)
+                .background(isSelected ? Color.blue : Color("feed-item"))
+                .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(Constants.Constraints.buttonCornerRadius)
         }
     }

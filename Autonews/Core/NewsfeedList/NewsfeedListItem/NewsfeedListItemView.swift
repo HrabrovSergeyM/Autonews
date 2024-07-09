@@ -10,48 +10,82 @@ import SwiftUI
 struct NewsfeedListItemView: View {
     
     @ObservedObject var vm: NewsfeedListItemViewModel
+    @State private var isExpanded = false
     
     var body: some View {
-        HStack(alignment: .center, spacing: 12) {
-            if let imageData = vm.imageLoader.imageData, let uiImage = UIImage(data: imageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 120)
-                    .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
-            } else {
-                AsyncImage(url: URL(string: vm.titleImageUrl)) { image in
-                    image
+        VStack(spacing: 8) {
+            HStack(alignment: .top, spacing: 12) {
+                if let imageData = vm.imageLoader.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 120, height: 120)
                         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 120, height: 120)
+                } else {
+                    AsyncImage(url: URL(string: vm.titleImageUrl)) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 120, height: 120)
+                            .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 120, height: 120)
+                    }
+                    .onAppear {
+                        vm.loadImage()
+                    }
                 }
-                .onAppear {
-                    vm.loadImage()
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(vm.title)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .lineLimit(isExpanded ? nil : 2)
+                    
+                    Text(vm.description)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .lineLimit(isExpanded ? nil : 2)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 8)
             }
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(vm.title)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                    .lineLimit(2)
-                
-                Text(vm.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .lineLimit(2)
+            if isExpanded {
+                VStack(alignment: .leading, spacing: 8) {
+                    
+                    
+                    TagView(tag: vm.categoryType)
+                    
+                    Text(vm.fullUrl)
+                        .foregroundColor(.blue)
+                        .font(.callout)
+                        .lineLimit(nil)
+                        .onTapGesture {
+                            guard let url = URL(string: vm.fullUrl) else { return }
+                            UIApplication.shared.open(url)
+                        }
+                    
+                    if let formattedDate = vm.publishedDate.toDisplayFormat() {
+                        Text(formattedDate)
+                            .foregroundColor(.primary)
+                            .font(.caption)
+                    }
+                        
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .transition(.move(edge: .bottom))
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.vertical, 8)
         }
         .padding(12)
-        .background(Color.white)
+        .background(Color("feed-item"))
         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
-        .shadow(radius: 4)
+        .onTapGesture {
+            withAnimation {
+                isExpanded.toggle()
+            }
+        }
     }
 }
+

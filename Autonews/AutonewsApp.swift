@@ -11,7 +11,9 @@ import SwiftUI
 struct AutonewsApp: App {
     var body: some Scene {
         WindowGroup {
-            NewsfeedListView()
+            NavigationStack {
+                NewsfeedListView()
+            }
         }
     }
 }

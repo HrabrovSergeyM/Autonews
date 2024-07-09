@@ -38,9 +38,10 @@ struct PageListView<ViewModel, ItemView>: View where ViewModel: PageListViewMode
                     pageListVM.getData(refresh: true)
                 })
                 .disabled(pageListVM.isLoading)
-                .padding()
+                .padding(8)
             }
         }
+        .background(Color("feed-list"))
         .onAppear {
             if pageListVM.items == nil {
                 pageListVM.getData(refresh: true)

@@ -18,8 +18,8 @@ struct PaginationControlButton: View {
         }) {
             Image(systemName: icon)
                 .padding()
-                .background(Color.gray)
-                .foregroundColor(.white)
+                .background(Color("feed-item"))
+                .foregroundColor(.primary)
                 .cornerRadius(Constants.Constraints.buttonCornerRadius)
         }
     }
