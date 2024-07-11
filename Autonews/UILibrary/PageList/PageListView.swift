@@ -13,10 +13,12 @@ struct PageListView<ViewModel, ItemView>: View where ViewModel: PageListViewMode
     let itemViewBuilder: (ViewModel.Item) -> ItemView
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
+    
+    
     var body: some View {
         VStack {
             ScrollView {
-                LazyVStack {
+                LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 8), count: horizontalSizeClass == .compact ? 1 : 2), spacing: 16) {
                     if let items = pageListVM.items {
                         ForEach(items, id: \.id) { item in
                             itemViewBuilder(item)

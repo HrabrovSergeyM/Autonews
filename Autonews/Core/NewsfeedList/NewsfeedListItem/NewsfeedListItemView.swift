@@ -15,14 +15,14 @@ struct NewsfeedListItemView: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            HStack(alignment: .top, spacing: 12) {
+            HStack(alignment: isExpanded ? .top : .center, spacing: 12) {
                 if let imageData = vm.imageLoader.imageData, let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
                         .frame(
-                            width: Constants.Constraints.newsfeedCardImageWidth,
-                            height: Constants.Constraints.newsfeedCardImageHeight
+                            width: isExpanded ? Constants.Constraints.newsfeedCardImageWidth : 80,
+                            height: isExpanded ? Constants.Constraints.newsfeedCardImageHeight : 80
                         )
                         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
                 } else {
@@ -31,15 +31,15 @@ struct NewsfeedListItemView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(
-                                width: Constants.Constraints.newsfeedCardImageWidth,
-                                height: Constants.Constraints.newsfeedCardImageHeight
+                                width: isExpanded ? Constants.Constraints.newsfeedCardImageWidth : 80,
+                                height: isExpanded ? Constants.Constraints.newsfeedCardImageHeight : 80
                             )
                             .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
                     } placeholder: {
                         ProgressView()
                             .frame(
-                                width: Constants.Constraints.newsfeedCardImageWidth,
-                                height: Constants.Constraints.newsfeedCardImageHeight
+                                width: 80,
+                                height: 80
                             )
                     }
                     .onAppear {
@@ -48,13 +48,13 @@ struct NewsfeedListItemView: View {
                 }
                 VStack(alignment: .leading, spacing: 4) {
                     Text(vm.title)
-                        .font(.headline)
+                        .font(isExpanded ? .headline : .title2)
                         .foregroundColor(.primary)
-                        .lineLimit(isExpandedText ? nil : 3)
-                    Text(vm.description)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .lineLimit(isExpandedText ? nil : 2)
+                    if isExpanded {
+                        Text(vm.description)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -87,8 +87,10 @@ struct NewsfeedListItemView: View {
         .background(Color("feed-item"))
         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
         .onTapGesture {
-            withAnimation(.spring()) {
-                isExpanded.toggle()
+            DispatchQueue.main.async {
+                withAnimation(.easeInOut) {
+                    isExpanded.toggle()
+                }
             }
             isExpandedText.toggle()
         }
