@@ -22,8 +22,8 @@ public enum Constants {
         static let newsfeedCardCornerRadius: CGFloat = 8
         static let newsfeedCardHeight: CGFloat = 120
         
-        static let newsfeedCardImageHeight: CGFloat = 120
-        static let newsfeedCardImageWidth: CGFloat = 120
+        static let newsfeedCardImageHeight: CGFloat = 180
+        static let newsfeedCardImageWidth: CGFloat = 320
     }
     
     public enum FolderName {

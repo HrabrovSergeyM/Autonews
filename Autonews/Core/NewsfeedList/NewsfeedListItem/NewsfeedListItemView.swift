@@ -11,10 +11,9 @@ struct NewsfeedListItemView: View {
     
     @ObservedObject var vm: NewsfeedListItemViewModel
     @State private var isExpanded = false
-    @State private var isExpandedText = false
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             HStack(alignment: isExpanded ? .top : .center, spacing: 12) {
                 if let imageData = vm.imageLoader.imageData, let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
@@ -46,21 +45,21 @@ struct NewsfeedListItemView: View {
                         vm.loadImage()
                     }
                 }
-                VStack(alignment: .leading, spacing: 4) {
+                if !isExpanded {
                     Text(vm.title)
-                        .font(isExpanded ? .headline : .title2)
+                        .font(.headline)
                         .foregroundColor(.primary)
-                    if isExpanded {
-                        Text(vm.description)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            
             if isExpanded {
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(vm.title)
+                        .font(.title2)
+                        .foregroundColor(.primary)
+                    Text(vm.description)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     TagView(tag: vm.categoryType)
                     Text(vm.fullUrl)
                         .foregroundColor(.blue)
@@ -88,11 +87,10 @@ struct NewsfeedListItemView: View {
         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
         .onTapGesture {
             DispatchQueue.main.async {
-                withAnimation(.easeInOut) {
+                withAnimation(.bouncy) {
                     isExpanded.toggle()
                 }
             }
-            isExpandedText.toggle()
         }
     }
 }
