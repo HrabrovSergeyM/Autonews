@@ -11,6 +11,7 @@ struct NewsfeedListItemView: View {
     
     @ObservedObject var vm: NewsfeedListItemViewModel
     @State private var isExpanded = false
+    var onTap: () -> Void
     
     var body: some View {
         VStack(spacing: 12) {
@@ -87,9 +88,10 @@ struct NewsfeedListItemView: View {
         .cornerRadius(Constants.Constraints.newsfeedCardCornerRadius)
         .onTapGesture {
             DispatchQueue.main.async {
-                withAnimation(.bouncy) {
+                withAnimation(.easeInOut) {
                     isExpanded.toggle()
                 }
+                onTap()
             }
         }
     }

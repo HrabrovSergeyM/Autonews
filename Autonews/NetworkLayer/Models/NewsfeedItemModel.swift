@@ -18,4 +18,4 @@ struct NewsfeedItemModel: FeedItem, Decodable {
     let categoryType: String?
 }
 
-protocol FeedItem: Identifiable, Decodable {}
+protocol FeedItem: Identifiable, Decodable, Equatable {}

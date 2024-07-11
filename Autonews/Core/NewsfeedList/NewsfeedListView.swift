@@ -13,8 +13,8 @@ struct NewsfeedListView: View {
     @State var cacheSize = LocalFileManager.instance.getCacheSize(folderName: Constants.FolderName.feedItemImagesFolder)
     
     var body: some View {
-        PageListView(pageListVM: vm) { item in
-            NewsfeedListItemView(vm: NewsfeedListItemViewModel(newsfeedItem: item))
+        PageListView(pageListVM: vm) { item, onTap in
+            NewsfeedListItemView(vm: NewsfeedListItemViewModel(newsfeedItem: item), onTap: onTap)
         }
         .navigationTitle(Constants.Strings.feedNavigationTitle)
         .toolbar {
